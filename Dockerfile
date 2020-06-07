@@ -5,7 +5,7 @@
 FROM python:3.7-slim AS compile-image
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends build-essential gcc perl wget git autoconf zlib1g zlib1g-dev 
+RUN apt-get install -y --no-install-recommends build-essential gcc perl wget git autoconf zlib1g zlib1g-dev libbz2-dev bzip2 liblzma-dev libncurses5-dev
 
 RUN python -m venv /opt/venv
 # Make sure we use the virtualenv:
