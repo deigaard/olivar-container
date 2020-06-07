@@ -25,7 +25,8 @@ RUN mkdir /opt/tools/bin
 RUN cd /opt/tools \
       && wget https://github.com/marbl/parsnp/releases/download/v1.2/parsnp-Linux64-v1.2.tar.gz \
       && tar -xvf parsnp-Linux64-v1.2.tar.gz \
-      && ln -s /opt/tools/Parsnp-Linux64-v1.2/parsnp /opt/tools/bin/parsnp
+      && cp /opt/tools/Parsnp-Linux64-v1.2/parsnp /opt/tools/bin/parsnp
+      #&& ln -s /opt/tools/Parsnp-Linux64-v1.2/parsnp /opt/tools/bin/parsnp
 
 #
 # Install Primer3
@@ -34,8 +35,10 @@ RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/primer3-org/primer3.git primer3 \
       && cd primer3/src \
       && make \
-      && ln -s /opt/tools/primer3/src/primer3_core /opt/tools/bin \
-      && ln -s /opt/tools/primer3/src/primer3_masker /opt/tools/bin
+      && cp /opt/tools/primer3/src/primer3_core /opt/tools/bin \
+      && cp /opt/tools/primer3/src/primer3_masker /opt/tools/bin
+      #&& ln -s /opt/tools/primer3/src/primer3_core /opt/tools/bin \
+      #&& ln -s /opt/tools/primer3/src/primer3_masker /opt/tools/bin
 
 #
 # Install Blast
@@ -47,7 +50,8 @@ RUN cd /opt/tools \
       && ./configure \
       && cd ReleaseMT/build \
       && make all_r \
-      && ln -s /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
+      && cp /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
+      #&& ln -s /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
 
 #
 # Install Samtools (needs htslib as well)
