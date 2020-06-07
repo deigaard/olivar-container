@@ -19,11 +19,17 @@ RUN mkdir /opt/tools
 
 RUN mkdir /opt/tools/bin
 
+#
+# Install Parsnp
+#
 RUN cd /opt/tools \
       && wget https://github.com/marbl/parsnp/releases/download/v1.2/parsnp-Linux64-v1.2.tar.gz \
       && tar -xvf parsnp-Linux64-v1.2.tar.gz \
       && ln -s /opt/tools/Parsnp-Linux64-v1.2/parsnp /opt/tools/bin/parsnp
 
+#
+# Install Primer3
+#
 RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/primer3-org/primer3.git primer3 \
       && cd primer3/src \
@@ -31,6 +37,9 @@ RUN cd /opt/tools \
       && ln -s /opt/tools/primer3/src/primer3_core /opt/tools/bin \
       && ln -s /opt/tools/primer3/src/primer3_masker /opt/tools/bin
 
+#
+# Install Blast
+#
 RUN cd /opt/tools \
       && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-src.tar.gz \
       && tar -xvf ncbi-blast-2.10.0+-src.tar.gz \
@@ -40,6 +49,9 @@ RUN cd /opt/tools \
       && make all_r \
       && ln -s /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
 
+#
+# Install Samtools (needs htslib as well)
+#
 RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/samtools/htslib.git \
       && cd htslib \
@@ -58,6 +70,39 @@ RUN cd /opt/tools \
       && make \
       && make install
 
+#
+# Install minimap2
+#
+RUN cd /opt/tools \
+      && /usr/bin/git clone https://github.com/lh3/minimap2 \
+      && cd minimap2 \
+      && make \
+      && cp minimap2 /opt/tools/bin
+
+#
+# Install Bowtie2 (needs libtbb-dev)
+#
+RUN apt-get install -y --no-install-recommends libtbb-dev
+ENV DESTDIR /opt/tools
+RUN cd /opt/tools \
+      && /usr/bin/git clone https://github.com/BenLangmead/bowtie2.git \
+      && cd bowtie2 \
+      && make \
+      && make install
+
+#
+# Install Lofreq
+#
+RUN apt-get install -y --no-install-recommends libtool automake
+RUN cd /opt/tools \
+      && /usr/bin/git clone https://github.com/CSB5/lofreq.git \
+      && cd lofreq \
+      && ./bootstrap \
+      && ./configure --prefix=/opt/tools --with-htslib=/opt/tools/htslib \
+      && make \
+      && make install 
+
+
 #COPY setup.py .
 #COPY myapp/ .
 #RUN pip install .
@@ -74,7 +119,7 @@ RUN apt-get update \
 COPY --from=compile-image /opt/venv /opt/venv
 COPY --from=compile-image /opt/tools/bin /opt/tools/bin
 
-RUN mkdir /opt/tools
+#RUN mkdir /opt/tools
 RUN mkdir /opt/work
 
 RUN cd /opt/tools \
