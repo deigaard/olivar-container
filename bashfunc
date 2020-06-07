@@ -1,0 +1,9 @@
+olivar(){
+        docker run -it --rm \
+                -v "${HOME}:${HOME}:ro" \
+                -v "$(pwd):/opt/olivar" \
+                -v /tmp:/tmp \
+                --workdir /opt/olivar \
+                --log-driver none \
+                deigaard/olivar-container "$@"
+}
