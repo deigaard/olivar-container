@@ -12,17 +12,3 @@ pandas==1.0.4
 jinja2==2.11.2
 pysam==0.15.4
 pyvcf==0.6.8
-
-##Biopython
-##Pandas
-##Jinja2
-#Parsnp
-#Primer3
-#Blast
-#MAFFT
-##PyVCF
-##pysam
-#Samtools
-#Minimap2
-#Bowtie2
-#Lofreq

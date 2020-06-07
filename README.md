@@ -1,4 +1,4 @@
-# Dockefille for building olivar with dependancies
+# Dockerfile for building olivar with dependancies
 
 ## [Olivar Gitlab Repository](https://gitlab.com/treangenlab/olivar.git)
 
