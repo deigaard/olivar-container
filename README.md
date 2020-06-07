@@ -33,7 +33,7 @@
 - Bowtie2 - [http://bowtie-bio.sourceforge.net/bowtie2/index.shtml](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) - [Source](https://github.com/BenLangmead/bowtie2.git)
 - Lofreq - [https://csb5.github.io/lofreq/](https://csb5.github.io/lofreq/) - [Source](https://github.com/CSB5/lofreq)
 
-## Packages and Dependencies installed in `build-image` (2nd pass)
+### Packages and Dependencies installed in `build-image` (2nd pass)
 
 - MAFFT - https://mafft.cbrc.jp/alignment/software/mafft_7.450-1_amd64.deb
 
@@ -42,8 +42,7 @@
 ## To build image
 
 <pre>
-<code>
-git clone git@github.com:deigaard/olivar-container.git
+<code> git clone git@github.com:deigaard/olivar-container.git
 
 cd olivar-container
 
