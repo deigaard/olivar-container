@@ -20,16 +20,33 @@ RUN mkdir /opt/tools
 RUN mkdir /opt/tools/bin
 
 #
-# Install Parsnp
+# Install Parsnp binaries
 #
 RUN cd /opt/tools \
       && wget https://github.com/marbl/parsnp/releases/download/v1.2/parsnp-Linux64-v1.2.tar.gz \
       && tar -xvf parsnp-Linux64-v1.2.tar.gz \
       && cp /opt/tools/Parsnp-Linux64-v1.2/parsnp /opt/tools/bin/parsnp
-      #&& ln -s /opt/tools/Parsnp-Linux64-v1.2/parsnp /opt/tools/bin/parsnp
 
 #
-# Install Primer3
+# Looking at potentially source install of Parsnp
+#
+#RUN cd /opt/tools \
+#      && /usr/bin/git clone https://github.com/marbl/parsnp.git
+#      && cd parsnp \
+#      && cd muscle \
+#      && ./autogen.sh \
+#      && ./configure --prefix=/opt/tools CXXFLAGS='-fopenmp' \
+#      && make \
+#      && make install \
+#      && cd .. \
+#      && ./autogen.sh \
+#      export ORIGIN=\$ORIGIN
+#      && ./configure CXXFLAGS='-fopenmp' LDFLAGS='-Wl,-rpath,$$ORIGIN/../muscle/lib'
+#      && make LDADD=-lMUSCLE-3.7 \
+#      && make install
+
+#
+# Install Primer3 from source
 #
 RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/primer3-org/primer3.git primer3 \
@@ -37,24 +54,31 @@ RUN cd /opt/tools \
       && make \
       && cp /opt/tools/primer3/src/primer3_core /opt/tools/bin \
       && cp /opt/tools/primer3/src/primer3_masker /opt/tools/bin
-      #&& ln -s /opt/tools/primer3/src/primer3_core /opt/tools/bin \
-      #&& ln -s /opt/tools/primer3/src/primer3_masker /opt/tools/bin
 
 #
-# Install Blast
+# Install Blast binaries (latest)
 #
+
 RUN cd /opt/tools \
-      && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-src.tar.gz \
-      && tar -xvf ncbi-blast-2.10.0+-src.tar.gz \
-      && cd ncbi-blast-2.10.0+-src/c++ \
-      && ./configure \
-      && cd ReleaseMT/build \
-      && make all_r \
-      && cp /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
-      #&& ln -s /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
+      && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-x64-linux.tar.gz \
+      && tar -xvf ncbi-blast-2.10.0+-x64-linux.tar.gz \
+      && cd tar -xvf ncbi-blast-2.10.0+ \
+      && cp -r bin /opt/tools/bin
 
 #
-# Install Samtools (needs htslib as well)
+# Install Blast from source
+#
+#RUN cd /opt/tools \
+#      && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-src.tar.gz \
+#      && tar -xvf ncbi-blast-2.10.0+-src.tar.gz \
+#      && cd ncbi-blast-2.10.0+-src/c++ \
+#      && ./configure \
+#      && cd ReleaseMT/build \
+#      && make all_r \
+#      && cp /opt/tools/ncbi-blast-2.10.0+-src/c++/ReleaseMT/bin/run_with_lock /opt/tools/bin
+
+#
+# Install Samtools (needs htslib as well) from source
 #
 RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/samtools/htslib.git \
@@ -75,7 +99,7 @@ RUN cd /opt/tools \
       && make install
 
 #
-# Install minimap2
+# Install minimap2 from source
 #
 RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/lh3/minimap2 \
@@ -84,7 +108,7 @@ RUN cd /opt/tools \
       && cp minimap2 /opt/tools/bin
 
 #
-# Install Bowtie2 (needs libtbb-dev)
+# Install Bowtie2 (needs libtbb-dev) from source
 #
 RUN apt-get install -y --no-install-recommends libtbb-dev
 ENV DESTDIR /opt/tools
@@ -95,7 +119,7 @@ RUN cd /opt/tools \
       && make install
 
 #
-# Install Lofreq
+# Install Lofreq from source
 #
 RUN apt-get install -y --no-install-recommends libtool automake
 RUN cd /opt/tools \
