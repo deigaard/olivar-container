@@ -12,3 +12,4 @@ pandas==1.0.4
 jinja2==2.11.2
 pysam==0.15.4
 pyvcf==0.6.8
+tqdm==4.46.1
