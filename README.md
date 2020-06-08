@@ -46,9 +46,7 @@
 
 cd olivar-container
 
-docker build -t deigaard/olivar-container .
-</pre>
-</code>
+docker build -t deigaard/olivar-container .</pre></code>
 
 ## To use image
 
@@ -60,9 +58,7 @@ docker build -t deigaard/olivar-container .
     -v /tmp:/tmp \
     --workdir /opt/olivar \
     --log-driver none \
-    deigaard/olivar-container 
-</pre>
-</code>
+    deigaard/olivar-container</pre></code>
 
 ### Command-line use
 <pre>
@@ -72,9 +68,7 @@ docker build -t deigaard/olivar-container .
     -v /tmp:/tmp \
     --workdir /opt/olivar \
     --log-driver none \
-    deigaard/olivar-container ./command and/or -args
-</pre>
-</code>
+    deigaard/olivar-container ./command and/or -args</pre></code>
 
 ### Or, handy bash function:
 <pre>
@@ -84,7 +78,5 @@ olivar test.py
 
 olivar bash
 
-olivar
-</pre>
-</code>
+olivar</pre></code>
 
