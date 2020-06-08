@@ -42,7 +42,7 @@
 ## To build image
 
 <pre>
-<code> git clone git@github.com:deigaard/olivar-container.git
+<code>git clone git@github.com:deigaard/olivar-container.git
 
 cd olivar-container
 
