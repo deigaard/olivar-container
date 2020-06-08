@@ -62,7 +62,7 @@ RUN cd /opt/tools \
 RUN cd /opt/tools \
       && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-x64-linux.tar.gz \
       && tar -xvf ncbi-blast-2.10.0+-x64-linux.tar.gz \
-      && cd tar -xvf ncbi-blast-2.10.0+ \
+      && cd ncbi-blast-2.10.0+ \
       && cp -r bin /opt/tools/bin
 
 #
