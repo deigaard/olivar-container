@@ -74,9 +74,11 @@ docker build -t deigaard/olivar-container .</pre></code>
 <pre>
 <code>. bashfunc
 
-olivar test.py
+olivar ./test.py
 
 olivar bash
+
+olivar python ./olivar.py /path/to/reference.fasta /path/to/input_genomes/
 
 olivar</pre></code>
 
