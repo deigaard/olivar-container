@@ -81,3 +81,5 @@ olivar bash
 
 olivar</pre></code>
 
+
+Note: testing Travis CI integration
