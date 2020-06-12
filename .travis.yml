@@ -4,14 +4,13 @@ services:
     - docker
 
 before_install:
-    - docker build -t deigaard/olivar-container .
+    - docker build -t soren/olivar-container .
 
 script:
-    # First test the API
-    #- docker run andem/tcmg412-tester
+    - docker run soren/olivar-container
 
 after_success:
-    # Push the API image back to Docker Hub
-    #- docker login -u $D_USERNAME -p $D_PASSWORD
-    #- docker push deigaard/olivar-container
+    # Push the image back to Docker Hub
+    - docker login -u $D_USERNAME -p $D_PASSWORD
+    - docker push soren/olivar-container
 
