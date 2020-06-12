@@ -48,7 +48,7 @@ cd olivar-container
 
 docker build -t deigaard/olivar-container .</pre></code>
 
-## To use image
+## To use image that you built above
 
 ### Interactive use
 <pre>
@@ -82,4 +82,10 @@ olivar bash
 olivar</pre></code>
 
 
-Note: testing Travis CI integration
+## To use pre-built image
+<pre>
+<code>. bashfunc-prebuilt
+
+git clone git@gitlab.com:treangenlab/olivar.git
+cd olivar
+olivar python ./olivar.py /path/to/reference.fasta /path/to/input_genomes/</pre></code>
