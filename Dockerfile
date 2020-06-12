@@ -59,6 +59,7 @@ RUN cd /opt/tools \
       && /usr/bin/git clone https://github.com/primer3-org/primer3.git primer3 \
       && cd primer3/src \
       && make \
+      && cp /opt/tools/primer3/src/oligotm /usr/local/bin \
       && cp /opt/tools/primer3/src/primer3_core /usr/local/bin \
       && cp /opt/tools/primer3/src/primer3_masker /usr/local/bin
 
@@ -67,13 +68,13 @@ RUN cd /opt/tools \
 #
 
 RUN cd /opt/tools \
-      && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-x64-linux.tar.gz \
-      && tar -xvf ncbi-blast-2.10.0+-x64-linux.tar.gz \
-      && cd ncbi-blast-2.10.0+ \
+      && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.1+-x64-linux.tar.gz \
+      && tar -xvf ncbi-blast-2.10.1+-x64-linux.tar.gz \
+      && cd ncbi-blast-2.10.1+ \
       && cp -rn bin /usr/local
 
 #
-# Install Blast from source
+# Install Blast from source (check VERSION)
 #
 #RUN cd /opt/tools \
 #      && wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.10.0+-src.tar.gz \

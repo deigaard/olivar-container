@@ -1,0 +1,18 @@
+language: python
+
+services:
+    - docker
+
+before_install:
+    - cd olivar-container
+    - docker build -t deigaard/olivar-container .
+
+script:
+    # First test the API
+    - docker run andem/tcmg412-tester
+
+after_success:
+    # Push the API image back to Docker Hub
+    #- docker login -u $D_USERNAME -p $D_PASSWORD
+    #- docker push deigaard/olivar-container
+
