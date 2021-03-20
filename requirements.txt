@@ -9,7 +9,7 @@ urllib3==1.25.9
 yarg==0.1.9
 biopython==1.77
 pandas==1.0.4
-jinja2==2.11.2
+jinja2==2.11.3
 pysam==0.15.4
 pyvcf==0.6.8
 tqdm==4.46.1
