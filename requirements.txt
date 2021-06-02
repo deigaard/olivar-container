@@ -5,7 +5,7 @@ idna==2.9
 pipdeptree==0.13.2
 pipreqs==0.4.10
 requests==2.23.0
-urllib3==1.25.9
+urllib3==1.26.5
 yarg==0.1.9
 biopython==1.77
 pandas==1.0.4
